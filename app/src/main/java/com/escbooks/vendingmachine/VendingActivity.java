@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class VendingActivity extends AppCompatActivity {
@@ -20,8 +23,8 @@ public class VendingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vending);
 
-        Button restockButton = (Button) findViewById(R.id.restock_button);
-        Button purchaseButton = (Button) findViewById(R.id.purchase_button);
+        final Button restockButton = (Button) findViewById(R.id.restock_button);
+        final Button purchaseButton = (Button) findViewById(R.id.purchase_button);
 
         final TextView walletAmountView = (TextView) findViewById(R.id.wallet_amount);
         final TextView stockAmountView = (TextView) findViewById(R.id.stock_amount);
@@ -57,6 +60,25 @@ public class VendingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(VendingActivity.this, ProductsActivity.class);
                 startActivityForResult(intent, 1);
+            }
+        });
+
+        Switch switchView = (Switch) findViewById(R.id.is_in_service_switch);
+
+        switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                restockButton.setEnabled(b);
+                purchaseButton.setEnabled(b);
+            }
+        });
+
+        ((CheckBox) findViewById(R.id.nuts_checkbox)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    // CheckBox is checked!
+                }
             }
         });
     }

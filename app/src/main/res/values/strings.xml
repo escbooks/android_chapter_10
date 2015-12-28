@@ -18,4 +18,9 @@
     <string name="crisps_price">1.75</string>
     <string name="snickers_price">1.65</string>
     <string name="select_product">Select Product</string>
+    <string name="is_in_service">Is in Service</string>
+    <string name="veggie_option">Veggie</string>
+    <string name="has_sweetener">Has sweetener</string>
+    <string name="has_nuts">Has nuts</string>
+    <string name="description">Description</string>
 </resources>
